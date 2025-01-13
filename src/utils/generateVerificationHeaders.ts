@@ -5,7 +5,9 @@ import { LRUCache } from 'lru-cache'; // Correct named import
 const SECRET_KEY = process.env.SECRET_KEY || 'my-secure-key';
 
 // Redis client setup (singleton)
-const redisClient = createClient({ url: 'redis://127.0.0.1:6379' });
+const redisClient = createClient({
+    url: process.env.REDIS_URL || 'redis://redis:6379',
+});
 redisClient.on('connect', () => console.log('Connected to Redis'));
 redisClient.on('error', (err) => console.error('Redis error:', err));
 

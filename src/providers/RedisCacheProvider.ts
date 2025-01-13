@@ -5,7 +5,9 @@ export class RedisCacheProvider implements ICacheProvider {
     private client;
 
     constructor() {
-        this.client = createClient({ url: 'redis://127.0.0.1:6379' });
+        this.client = createClient({
+            url: process.env.REDIS_URL || 'redis://redis:6379',
+        });
         this.client.connect().catch(console.error);
     }
 
