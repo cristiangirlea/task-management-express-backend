@@ -2,9 +2,10 @@ import { Router } from 'express';
 import { ProjectController } from '../controllers/ProjectController';
 import { ApiProjectProvider } from '../providers/ApiProjectProvider';
 import { ProjectService } from '../services/ProjectService';
+import {LARAVEL_API} from "../config/config";
 
 const router = Router();
-const projectProvider = new ApiProjectProvider(process.env.LARAVEL_API || 'http://localhost:8000/api');
+const projectProvider = new ApiProjectProvider(LARAVEL_API);
 const projectService = new ProjectService(projectProvider);
 const projectController = new ProjectController(projectService);
 

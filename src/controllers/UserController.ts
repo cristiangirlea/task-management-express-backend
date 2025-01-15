@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
+import {LARAVEL_API} from "../config/config";
 
-const LARAVEL_API = process.env.LARAVEL_API || 'http://localhost:8000/api';
+console.log('LARAVEL_API user:', process.env.LARAVEL_API)
 
 // Get all users
 export const getAllUsers = async (req: Request, res: Response) => {

@@ -2,9 +2,10 @@ import express from 'express';
 import { TaskService } from '../services/TaskService';
 import { TaskController } from '../controllers/TaskController';
 import { ApiTaskProvider } from '../providers/ApiTaskProvider';
+import {LARAVEL_API} from "../config/config";
 
 const router = express.Router();
-const taskProvider = new ApiTaskProvider('http://localhost:8000/api');
+const taskProvider = new ApiTaskProvider(LARAVEL_API);
 const taskService = new TaskService(taskProvider);
 const taskController = new TaskController(taskService);
 
